@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://d2433q1jws7"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_7u77a"]
+a = Vector2(-1000, -1000)
+b = Vector2(-1000, 1000)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_jjgbg"]
+a = Vector2(1000, -1000)
+b = Vector2(1000, 1000)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_bo1nx"]
+a = Vector2(-1000, 1000)
+b = Vector2(1000, 1000)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_8gbba"]
+a = Vector2(-1000, -1000)
+b = Vector2(1000, -1000)
+
+[node name="Main" type="Node2D"]
+
+[node name="Boundaries" type="Node" parent="."]
+
+[node name="Left" type="Area2D" parent="Boundaries"]
+
+[node name="Leva" type="CollisionShape2D" parent="Boundaries/Left"]
+shape = SubResource("SegmentShape2D_7u77a")
+
+[node name="Right" type="Area2D" parent="Boundaries"]
+
+[node name="Desna" type="CollisionShape2D" parent="Boundaries/Right"]
+shape = SubResource("SegmentShape2D_jjgbg")
+
+[node name="Bottom" type="Area2D" parent="Boundaries"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/Bottom"]
+shape = SubResource("SegmentShape2D_bo1nx")
+
+[node name="Top" type="Area2D" parent="Boundaries"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/Top"]
+shape = SubResource("SegmentShape2D_8gbba")
