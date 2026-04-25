@@ -3,8 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://c1mv7cjqua6do" path="res://Scenes/kai.tscn" id="1_jjgbg"]
 [ext_resource type="Texture2D" uid="uid://cudhdx4rsm2s" path="res://Assets/player.png" id="3_8gbba"]
 [ext_resource type="Texture2D" uid="uid://cfop8txfv2dex" path="res://Assets/iconheadthing.png" id="4_jjvhh"]
-[ext_resource type="PackedScene" uid="uid://1s3japb1k3p2" path="res://Scenes/Box.tscn" id="4_kry3j"]
-[ext_resource type="PackedScene" uid="uid://b1ax8ub50q2lb" path="res://Scenes/collection_zone.tscn" id="5_kry3j"]
+[ext_resource type="PackedScene" path="res://Scenes/Box.tscn" id="4_kry3j"]
+[ext_resource type="PackedScene" path="res://Scenes/collection_zone.tscn" id="5_kry3j"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_7u77a"]
 a = Vector2(-1000, -1000)
