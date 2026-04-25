@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-var SPEED = 700.0*Global.speedUpg
+var SPEED = 300.0*Global.speedUpg
 var pressed_actions = []
 const directions = { &"left": Vector2(-1, 0), &"right": Vector2(1, 0), &"up": Vector2(0, -1), &"down": Vector2(0, 1) }
 @onready var anim = $AnimatedSprite2D
