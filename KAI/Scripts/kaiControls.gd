@@ -1,10 +1,12 @@
 extends CharacterBody2D
 
-
-var SPEED = 300.0*Global.speedUpg
+var sinceRest=0
+var DefaultSPEED = 400.0*Global.speedUpg
+var Speed= DefaultSPEED
 var pressed_actions = []
 const directions = { &"left": Vector2(-1, 0), &"right": Vector2(1, 0), &"up": Vector2(0, -1), &"down": Vector2(0, 1) }
 @onready var anim = $AnimatedSprite2D
+
 
 var last_direction: Vector2
 
@@ -14,6 +16,12 @@ func _ready() -> void:
 
 func _process(delta):
 	Global.velocity=velocity
+	Speed = max(0,400.0*Global.speedUpg-sinceRest)
+	if Global.carryingBox==true:
+		sinceRest+=1
+	else:
+		Speed=DefaultSPEED
+		sinceRest=0
 	for d in directions:
 		if Input.is_action_just_pressed(d):
 			pressed_actions.push_back(d)
@@ -21,7 +29,8 @@ func _process(delta):
 			pressed_actions.erase(d)
 	var direction = Vector2.ZERO if pressed_actions.is_empty() else directions[pressed_actions[-1]]
 	if direction:
-		velocity = direction*SPEED
+		velocity = direction*Speed
+		Global.velocity=velocity
 	else :
 		velocity = Vector2.ZERO
 		
