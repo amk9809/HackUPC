@@ -1,5 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://c1mv7cjqua6do"]
+[gd_scene load_steps=5 format=3 uid="uid://c1mv7cjqua6do"]
 
+[ext_resource type="Script" uid="uid://nvf88tgv13sm" path="res://Scripts/kaiControls.gd" id="1_mebc6"]
 [ext_resource type="Texture2D" uid="uid://cudhdx4rsm2s" path="res://Assets/player.png" id="1_xrrhk"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mebc6"]
@@ -17,9 +18,10 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="KAI" type="CharacterBody2D"]
+[node name="KAI" type="CharacterBody2D" groups=["player"]]
 collision_layer = 15
 collision_mask = 15
+script = ExtResource("1_mebc6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_mebc6")

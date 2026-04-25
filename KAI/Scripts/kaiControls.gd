@@ -5,6 +5,8 @@ var SPEED = 500.0*Global.speedUpg
 var pressed_actions = []
 const directions = { &"left": Vector2(-1, 0), &"right": Vector2(1, 0), &"up": Vector2(0, -1), &"down": Vector2(0, 1) }
 
+func _ready() -> void:
+	add_to_group("player")
 
 func _process(delta):
 	for d in directions:
