@@ -13,6 +13,7 @@ func _ready() -> void:
 	anim.play("idle_forward")
 
 func _process(delta):
+	Global.velocity=velocity
 	for d in directions:
 		if Input.is_action_just_pressed(d):
 			pressed_actions.push_back(d)
