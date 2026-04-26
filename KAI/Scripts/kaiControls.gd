@@ -16,7 +16,7 @@ func _ready() -> void:
 
 func _process(delta):
 	Global.velocity=velocity
-	Speed = max(0,400.0*Global.speedUpg-sinceRest)
+	Speed = max(0,400.0*Global.speedUpg-sinceRest*0.5)
 	if Global.carryingBox==true:
 		sinceRest+=1
 	else:
