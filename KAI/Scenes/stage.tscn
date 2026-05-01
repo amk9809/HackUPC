@@ -1,0 +1,44 @@
+[gd_scene load_steps=3 format=3 uid="uid://cqhflrsqewcqg"]
+
+[ext_resource type="FontFile" uid="uid://dobgt8c14l50i" path="res://Assets/Pix32.ttf" id="1_6eo5e"]
+[ext_resource type="Script" uid="uid://bmsinfmewttpy" path="res://Scripts/stage.gd" id="1_plxqo"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_plxqo")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = -1380.0
+offset_top = -152.0
+offset_right = -1147.0
+offset_bottom = -106.0
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.92941177, 0.21568628, 0.2, 1)
+theme_override_colors/font_outline_color = Color(0.9254902, 0.7921569, 0.92941177, 1)
+theme_override_constants/outline_size = 30
+theme_override_fonts/font = ExtResource("1_6eo5e")
+theme_override_font_sizes/font_size = 45
+text = "S T A G E :"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = -1109.0
+offset_top = -92.0
+offset_right = -1069.0
+offset_bottom = -46.0
+
+[node name="Label2" type="Label" parent="HBoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.92941177, 0.21568628, 0.2, 1)
+theme_override_colors/font_outline_color = Color(0.9254902, 0.7921569, 0.92941177, 1)
+theme_override_constants/outline_size = 30
+theme_override_fonts/font = ExtResource("1_6eo5e")
+theme_override_font_sizes/font_size = 45

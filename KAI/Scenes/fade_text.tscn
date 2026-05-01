@@ -1,0 +1,129 @@
+[gd_scene load_steps=9 format=3 uid="uid://htjyafq0vy7u"]
+
+[ext_resource type="Script" uid="uid://c6p11cgaawwum" path="res://Scripts/fade_text.gd" id="1_ec35c"]
+[ext_resource type="AudioStream" uid="uid://chqdlb37yw56t" path="res://Assets/Sounds/mikua.mp3" id="2_j41qd"]
+[ext_resource type="FontFile" uid="uid://dobgt8c14l50i" path="res://Assets/Pix32.ttf" id="2_vm70s"]
+
+[sub_resource type="Animation" id="Animation_j41qd"]
+resource_name = "fade_to_black"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Fade_background:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_vm70s"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Fade_background:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_4m6qh"]
+resource_name = "fade_back"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Fade_background:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_fggem"]
+resource_name = "black"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Fade_background:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vm70s"]
+_data = {
+&"RESET": SubResource("Animation_vm70s"),
+&"black": SubResource("Animation_fggem"),
+&"fade_back": SubResource("Animation_4m6qh"),
+&"fade_to_black": SubResource("Animation_j41qd")
+}
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_ec35c")
+
+[node name="Fade_background" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -516.0
+offset_top = -495.0
+offset_right = 441.2378
+offset_bottom = 389.71973
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.003388676
+color = Color(0, 0, 0, 0)
+
+[node name="Fade_anim" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_vm70s")
+}
+
+[node name="Text_rect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 81.28548
+offset_top = 1086.7976
+offset_right = -78.324585
+offset_bottom = -402.2024
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.003388676
+color = Color(0, 0, 0, 1)
+
+[node name="Text" type="Label" parent="Text_rect"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 37.405037
+offset_top = -121.74829
+offset_right = -38.206665
+offset_bottom = 107.25171
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_vm70s")
+theme_override_font_sizes/font_size = 32
+autowrap_mode = 3
+
+[node name="Typing_sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_j41qd")

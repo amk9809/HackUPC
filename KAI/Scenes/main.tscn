@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://d2433q1jws7"]
+[gd_scene format=4 uid="uid://d2433q1jws7"]
 
 [ext_resource type="PackedScene" uid="uid://c1mv7cjqua6do" path="res://Scenes/kai.tscn" id="1_jjgbg"]
 [ext_resource type="Texture2D" uid="uid://cudhdx4rsm2s" path="res://Assets/player.png" id="3_8gbba"]
@@ -7,24 +7,12 @@
 [ext_resource type="PackedScene" uid="uid://1s3japb1k3p2" path="res://Scenes/Box.tscn" id="4_kry3j"]
 [ext_resource type="Texture2D" uid="uid://dr1ydn3w6yn77" path="res://Assets/black.png" id="4_ynf5e"]
 [ext_resource type="PackedScene" uid="uid://b1ax8ub50q2lb" path="res://Scenes/collection_zone.tscn" id="5_kry3j"]
-[ext_resource type="Script" path="res://Scenes/label.gd" id="6_6bp64"]
+[ext_resource type="Script" uid="uid://06a5uuxiqr" path="res://Scripts/label.gd" id="6_6bp64"]
 [ext_resource type="FontFile" uid="uid://dobgt8c14l50i" path="res://Assets/Pix32.ttf" id="7_344ge"]
-
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_7u77a"]
-a = Vector2(-1000, -1000)
-b = Vector2(-1000, 1000)
-
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_jjgbg"]
-a = Vector2(1000, -1000)
-b = Vector2(1000, 1000)
-
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_bo1nx"]
-a = Vector2(-997, 711)
-b = Vector2(995, 711)
-
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_8gbba"]
-a = Vector2(-1000, -1000)
-b = Vector2(1000, -1000)
+[ext_resource type="PackedScene" uid="uid://cqhflrsqewcqg" path="res://Scenes/stage.tscn" id="10_d1ilt"]
+[ext_resource type="PackedScene" uid="uid://dl23rfyr7645a" path="res://Scenes/control.tscn" id="11_6iyac"]
+[ext_resource type="PackedScene" uid="uid://htjyafq0vy7u" path="res://Scenes/fade_text.tscn" id="12_6iyac"]
+[ext_resource type="Texture2D" uid="uid://dq1iiiwrda26y" path="res://Assets/vinette.png" id="13_fdnlq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8gbba"]
 texture = ExtResource("3_8gbba")
@@ -108,7 +96,9 @@ texture_region_size = Vector2i(390, 320)
 1:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-195, -160, 44.479355, -160, 44.47934, 160, -195, 160)
 2:5/0 = 0
 3:5/0 = 0
+3:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(195, -160, 195, 37.661133, 37.661133, 34.522705, 34.522705, -160)
 4:5/0 = 0
+4:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-195, 31.384277, -18.830597, 28.24585, -21.96904, -160, -195, -160)
 5:5/0 = 0
 6:5/0 = 0
 7:5/0 = 0
@@ -146,79 +136,90 @@ sources/0 = SubResource("TileSetAtlasSource_8gbba")
 sources/7 = SubResource("TileSetAtlasSource_344ge")
 sources/8 = SubResource("TileSetAtlasSource_hptm8")
 
-[node name="Main" type="Node2D"]
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_jkdf5"]
 
-[node name="Boundaries" type="Node" parent="."]
+[sub_resource type="Animation" id="Animation_jkdf5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("heart_beat:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.29803923)]
+}
 
-[node name="Left" type="Area2D" parent="Boundaries"]
+[sub_resource type="Animation" id="Animation_fdnlq"]
+resource_name = "heart_beat"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("heart_beat:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.008333206, 0.5083332, 1.0083332, 1.5166667, 2.0083334, 2.5, 3, 3.5333333, 4.0166664, 4.5166664, 5.016667, 5.5083337, 6, 6.491667, 6.9666667, 7.4666667, 7.9666667, 8.466667, 8.958334, 9.450001, 9.941668),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.29803923), Color(1, 1, 1, 0.039215688), Color(1, 1, 1, 0.29803923), Color(1, 1, 1, 0.039215688), Color(1, 1, 1, 0.29803923), Color(1, 1, 1, 0.039215688), Color(1, 1, 1, 0.29803923), Color(1, 1, 1, 0.039215688), Color(1, 1, 1, 0.29803923), Color(1, 1, 1, 0.039215688), Color(1, 1, 1, 0.29803923), Color(1, 1, 1, 0.039215688), Color(1, 1, 1, 0.29803923), Color(1, 1, 1, 0.039215688), Color(1, 1, 1, 0.29803923), Color(1, 1, 1, 0.039215688), Color(1, 1, 1, 0.29803923), Color(1, 1, 1, 0.039215688), Color(1, 1, 1, 0.29803923), Color(1, 1, 1, 0.039215688), Color(1, 1, 1, 0.039215688)]
+}
 
-[node name="Leva" type="CollisionShape2D" parent="Boundaries/Left"]
-position = Vector2(-1236, -1460)
-shape = SubResource("SegmentShape2D_7u77a")
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wsu2k"]
+_data = {
+&"RESET": SubResource("Animation_jkdf5"),
+&"heart_beat": SubResource("Animation_fdnlq")
+}
 
-[node name="Right" type="Area2D" parent="Boundaries"]
+[node name="Main" type="Node2D" unique_id=751499101]
 
-[node name="Desna" type="CollisionShape2D" parent="Boundaries/Right"]
-position = Vector2(3, -297)
-shape = SubResource("SegmentShape2D_jjgbg")
-
-[node name="Bottom" type="Area2D" parent="Boundaries"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/Bottom"]
-shape = SubResource("SegmentShape2D_bo1nx")
-
-[node name="Top" type="Area2D" parent="Boundaries"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/Top"]
-shape = SubResource("SegmentShape2D_8gbba")
-
-[node name="KAI" parent="." instance=ExtResource("1_jjgbg")]
-z_index = 30
+[node name="KAI" parent="." unique_id=1027827608 instance=ExtResource("1_jjgbg")]
+z_index = 1
 position = Vector2(-3, 3)
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1073322781]
 zoom = Vector2(0.65, 0.65)
 
-[node name="TileMapLayer" type="TileMapLayer" parent="."]
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=772310318]
 z_index = -5
 tile_map_data = PackedByteArray("AAD8//z/BwAAAAAAAAD9//z/BwABAAAAAAD+//z/BwACAAAAAAD///z/BwADAAAAAAAAAPz/BwAEAAAAAAABAPz/BwAFAAAAAAACAPz/BwAGAAAAAAADAPz/BwAHAAAAAAD8////BwAAAAMAAAD8/wAABwAAAAQAAAD8/wEABwAAAAUAAAD8/wIABwAAAAYAAAD9//3/BwABAAEAAAD9//7/BwABAAIAAAD9/wEABwABAAUAAAD9/wIABwABAAYAAAD+//3/BwACAAEAAAD+//7/BwACAAIAAAD+////BwACAAMAAAD+/wAABwACAAQAAAD+/wEABwACAAUAAAD+/wIABwACAAYAAAD///3/BwADAAEAAAD///7/BwADAAIAAAD/////BwADAAMAAAD//wAABwADAAQAAAD//wEABwADAAUAAAD//wIABwADAAYAAAAAAP3/BwAEAAEAAAAAAP7/BwAEAAIAAAAAAP//BwAEAAMAAAAAAAAABwAEAAQAAAAAAAEABwAEAAUAAAAAAAIABwAEAAYAAAABAP3/BwAFAAEAAAABAP7/BwAFAAIAAAABAP//BwAFAAMAAAABAAAABwAFAAQAAAABAAEABwAFAAUAAAABAAIABwAFAAYAAAACAP3/BwAGAAEAAAACAP7/BwAGAAIAAAACAP//BwAGAAMAAAACAAAABwAGAAQAAAACAAEABwAGAAUAAAACAAIABwAGAAYAAAADAP3/BwAHAAEAAAADAP7/BwAHAAIAAAADAP//BwAHAAMAAAADAAAABwAHAAQAAAADAAEABwAHAAUAAAADAAIABwAHAAYAAAD9////BwABAAMAAAD9/wAABwABAAQAAAD8//7/BwAAAAIAAAD8//3/BwAAAAEAAAA=")
 tile_set = SubResource("TileSet_bo1nx")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-1192.0001, -649)
-scale = Vector2(0.3557885, 0.35578847)
-texture = ExtResource("4_jjvhh")
-
-[node name="Box" parent="." instance=ExtResource("4_kry3j")]
+[node name="Box" parent="." unique_id=736432992 instance=ExtResource("4_kry3j")]
 position = Vector2(12, -376)
 
-[node name="Collection_zone" parent="." instance=ExtResource("5_kry3j")]
-position = Vector2(8, 327)
+[node name="Collection_zone" parent="." unique_id=1098220963 instance=ExtResource("5_kry3j")]
+position = Vector2(8, 509)
+scale = Vector2(0.8585804, 0.8585804)
 
-[node name="Respawn1" type="Marker2D" parent="."]
+[node name="Respawn1" type="Marker2D" parent="." unique_id=1028859994]
 position = Vector2(-714, -148)
 
-[node name="Respawn2" type="Marker2D" parent="."]
+[node name="Respawn2" type="Marker2D" parent="." unique_id=1501539712]
 position = Vector2(733, 450)
 
-[node name="Respawn3" type="Marker2D" parent="."]
+[node name="Respawn3" type="Marker2D" parent="." unique_id=1678307075]
 position = Vector2(737, -144)
 
-[node name="Control" type="Control" parent="."]
+[node name="Velocity_Meter" type="Control" parent="." unique_id=1842548415]
 layout_mode = 3
 anchors_preset = 0
-offset_left = -1354.0
-offset_top = -435.0
-offset_right = -972.0
-offset_bottom = -133.0
+offset_left = -1385.0
+offset_top = -353.0
+offset_right = -1003.0
+offset_bottom = -51.0
 script = ExtResource("6_6bp64")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Velocity_Meter" unique_id=1497387241]
 layout_mode = 0
 offset_right = 279.0
 offset_bottom = 94.0
 
-[node name="Label" type="Label" parent="Control/HBoxContainer"]
+[node name="Label" type="Label" parent="Velocity_Meter/HBoxContainer" unique_id=814057918]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.92941177, 0.21568628, 0.2, 1)
 theme_override_colors/font_outline_color = Color(0.9254902, 0.7921569, 0.92941177, 1)
@@ -227,17 +228,47 @@ theme_override_fonts/font = ExtResource("7_344ge")
 theme_override_font_sizes/font_size = 45
 text = "V E L O C I T Y :"
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="Control"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="Velocity_Meter" unique_id=222923988]
 layout_mode = 0
-offset_left = 223.0
-offset_top = 70.0
-offset_right = 408.0
-offset_bottom = 164.0
+offset_left = 243.0
+offset_top = 72.0
+offset_right = 428.0
+offset_bottom = 166.0
 
-[node name="Label2" type="Label" parent="Control/HBoxContainer2"]
+[node name="Label2" type="Label" parent="Velocity_Meter/HBoxContainer2" unique_id=1209054242]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.92941177, 0.21568628, 0.2, 1)
 theme_override_colors/font_outline_color = Color(0.9254902, 0.7921569, 0.92941177, 1)
 theme_override_constants/outline_size = 30
 theme_override_fonts/font = ExtResource("7_344ge")
 theme_override_font_sizes/font_size = 45
+
+[node name="Stage_Meter" parent="." unique_id=1120191984 instance=ExtResource("10_d1ilt")]
+
+[node name="Control2" parent="." unique_id=81528101 instance=ExtResource("11_6iyac")]
+
+[node name="CanvasLayer" parent="." unique_id=179952555 instance=ExtResource("12_6iyac")]
+
+[node name="heart_beat" type="Sprite2D" parent="." unique_id=2090699434]
+modulate = Color(1, 1, 1, 0.29803923)
+material = SubResource("CanvasItemMaterial_jkdf5")
+position = Vector2(319, 221)
+scale = Vector2(1.6135417, 2.0583334)
+texture = ExtResource("13_fdnlq")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=575223433]
+libraries/ = SubResource("AnimationLibrary_wsu2k")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1254933668]
+z_index = 69
+position = Vector2(-1203.0001, -574)
+scale = Vector2(0.3557885, 0.35578847)
+texture = ExtResource("4_jjvhh")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1752476218]
+z_index = 67
+offset_left = -1394.0
+offset_top = -764.0
+offset_right = -1012.0
+offset_bottom = -382.0
+color = Color(0, 0, 0, 1)

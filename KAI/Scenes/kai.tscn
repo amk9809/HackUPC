@@ -117,9 +117,8 @@
 [ext_resource type="Texture2D" uid="uid://docegrmgede0g" path="res://Assets/KAI/Side walk/Sidewalk_0038.png" id="115_03003"]
 [ext_resource type="Texture2D" uid="uid://cap4pg5885nci" path="res://Assets/KAI/Side walk/Sidewalk_0039.png" id="116_6ea52"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mebc6"]
-radius = 62.0
-height = 508.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v3v7v"]
+size = Vector2(116, 524)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ejcq5"]
 animations = [{
@@ -506,7 +505,8 @@ collision_mask = 15
 script = ExtResource("1_mebc6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_mebc6")
+position = Vector2(2, 14)
+shape = SubResource("RectangleShape2D_v3v7v")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, 1)

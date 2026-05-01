@@ -1,0 +1,50 @@
+[gd_scene load_steps=4 format=3 uid="uid://dl23rfyr7645a"]
+
+[ext_resource type="Script" uid="uid://l5m4nluwixx5" path="res://Scripts/ui_display.gd" id="1_cgmvo"]
+[ext_resource type="Script" uid="uid://ptgjds44erd1" path="res://Scripts/timer_logic.gd" id="2_vh8u0"]
+[ext_resource type="FontFile" uid="uid://dobgt8c14l50i" path="res://Assets/Pix32.ttf" id="3_vh8u0"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cgmvo")
+
+[node name="Timer" type="Timer" parent="."]
+script = ExtResource("2_vh8u0")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = -1115.0
+offset_top = 99.0
+offset_right = -1075.0
+offset_bottom = 145.0
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.92941177, 0.21568628, 0.2, 1)
+theme_override_colors/font_outline_color = Color(0.9254902, 0.7921569, 0.92941177, 1)
+theme_override_constants/outline_size = 30
+theme_override_fonts/font = ExtResource("3_vh8u0")
+theme_override_font_sizes/font_size = 45
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = -1373.0
+offset_top = 35.0
+offset_right = -1155.0
+offset_bottom = 81.0
+
+[node name="Label2" type="Label" parent="HBoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.92941177, 0.21568628, 0.2, 1)
+theme_override_colors/font_outline_color = Color(0.9254902, 0.7921569, 0.92941177, 1)
+theme_override_constants/outline_size = 30
+theme_override_fonts/font = ExtResource("3_vh8u0")
+theme_override_font_sizes/font_size = 45
+text = "T I M E R :"
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
